@@ -3,21 +3,28 @@ package com.example.daniel.currencyconverter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.example.daniel.currencyconverter.Currency.CurrencyAdapter;
+import com.example.daniel.currencyconverter.Currency.CurrencyRepository;
 import com.example.daniel.currencyconverter.Currency.MainContract;
 import com.example.daniel.currencyconverter.Currency.MainPresenter;
-import com.example.daniel.currencyconverter.XmlModels.Gesmes;
+import com.example.daniel.currencyconverter.Network.NetworkRepository;
+import com.example.daniel.currencyconverter.Scheduler.Schedule;
+import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity  implements MainContract.View {
 
-    private MainContract.Presenter mPresenter;
+    @Inject
+    MainContract.Presenter mPresenter;
+    private CurrencyAdapter mCurrencyAdapter;
+    @Inject
+    CurrencyRepository currencyRepository;
 
     private String[] mCurrencies;
 
@@ -30,7 +37,9 @@ public class MainActivity extends AppCompatActivity  implements MainContract.Vie
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mPresenter = new MainPresenter();
+        ((CurrencyApplication) getApplication()).getCurrencyApplicationComponent().inject(this);
+
+
         mPresenter.setView(this);
 
 
@@ -52,8 +61,10 @@ public class MainActivity extends AppCompatActivity  implements MainContract.Vie
     }
 
     @Override
-    public void showRates(Gesmes rates) {
+    public void showRates(Envelope rates) {
         mRecyclerView.setAdapter(
-                new CurrencyAdapter((String) mBaseSpinner.getSelectedItem(), rates));
+                new CurrencyAdapter(rates));
     }
+
+
 }

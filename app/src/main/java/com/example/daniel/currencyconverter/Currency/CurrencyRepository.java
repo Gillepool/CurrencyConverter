@@ -5,16 +5,12 @@ import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 
 import java.util.List;
 
-public class MainContract {
+import io.reactivex.Observable;
 
-    public interface View {
-        void showError();
-        void showRates(Envelope rates);
-    }
+/**
+ * Created by Daniel on 2017-11-11.
+ */
 
-    public interface Presenter {
-        void setView(View view);
-        void onBaseSelected();
-    }
-
+public interface CurrencyRepository {
+    Observable<Envelope> getResponse();
 }
