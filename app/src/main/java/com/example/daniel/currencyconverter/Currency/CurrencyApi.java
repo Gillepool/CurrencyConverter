@@ -5,16 +5,12 @@ import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 
 import java.util.List;
 
-public class MainContract {
+import io.reactivex.Observable;
+import retrofit2.http.GET;
 
-    public interface View {
-        void showError();
-        void showRates(Envelope rates);
-    }
+public interface CurrencyApi {
 
-    public interface Presenter {
-        void setView(View view);
-        void onBaseSelected();
-    }
+    @GET("eurofxref-daily.xml")
+    Observable<Envelope> getData();
 
 }

@@ -1,12 +1,14 @@
-package com.example.daniel.currencyconverter.XmlModels;
+package com.example.daniel.currencyconverter.XmlResponseModels;
 
 import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
 
 /**
  * Created by Daniel on 2017-11-10.
  */
 
-public class Cubes {
+@Root(name = "Cube/Cube")
+public class CurrencyCube {
 
 
     @Attribute(name="currency")
@@ -33,7 +35,7 @@ public class Cubes {
 
     @Override
     public String toString() {
-        return "Cubes{" +
+        return "CurrencyCube{" +
                 "currency='" + currency + '\'' +
                 ", rate='" + rate + '\'' +
                 '}';

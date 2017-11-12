@@ -1,4 +1,4 @@
-package com.example.daniel.currencyconverter.XmlModels;
+package com.example.daniel.currencyconverter.XmlResponseModels;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
