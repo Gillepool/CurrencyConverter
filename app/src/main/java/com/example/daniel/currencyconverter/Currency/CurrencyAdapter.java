@@ -2,6 +2,7 @@ package com.example.daniel.currencyconverter.Currency;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,6 @@ import com.example.daniel.currencyconverter.XmlResponseModels.CurrencyCube;
 import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +36,8 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         final CurrencyCube entry = mCurrencies.get(position);
         final Context context = holder.itemView.getContext();
+        Log.d("response", "Setting currency to " + entry.getCurrency());
+        Log.d("response", "Setting rate to " + entry.getRate());
         holder.currency.setText(entry.getCurrency());
         holder.rate.setText(entry.getRate());
     }

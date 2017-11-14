@@ -18,7 +18,15 @@ public class Envelope {
     @Element(name = "Cube")
     private Cube Cube;
 
+    private long timestamp;
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getSubject() {
         return subject;

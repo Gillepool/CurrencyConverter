@@ -31,6 +31,7 @@ public class NetworkModule {
                 .baseUrl("http://www.ecb.europa.eu/stats/eurofxref/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(SimpleXmlConverterFactory.create())
+                .client(client)
                 .build();
     }
 

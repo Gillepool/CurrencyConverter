@@ -1,9 +1,8 @@
 package com.example.daniel.currencyconverter.Currency;
 
-import com.example.daniel.currencyconverter.XmlResponseModels.CurrencyCube;
 import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 
-import java.util.List;
+import io.reactivex.Single;
 
 public class MainContract {
 
@@ -15,6 +14,10 @@ public class MainContract {
     public interface Presenter {
         void setView(View view);
         void onBaseSelected();
+    }
+
+    public interface Model{
+        Single<Envelope> getCurrency();
     }
 
 }
