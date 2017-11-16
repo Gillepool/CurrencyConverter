@@ -16,7 +16,11 @@ public class CurrencyApplication extends Application{
     @Override
     public void onCreate(){
         super.onCreate();
-        cac = DaggerCurrencyApplicationComponent.builder().currencyModule(new CurrencyModule()).networkModule(new NetworkModule()).build();
+        cac = DaggerCurrencyApplicationComponent.builder()
+                .currencyModule(new CurrencyModule())
+                .networkModule(new NetworkModule())
+                .currencyApplicationModule(new CurrencyApplicationModule(this))
+                .build();
     }
 
     public CurrencyApplicationComponent getCurrencyApplicationComponent(){

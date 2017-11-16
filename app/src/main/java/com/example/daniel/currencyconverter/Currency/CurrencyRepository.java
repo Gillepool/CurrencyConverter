@@ -1,9 +1,6 @@
 package com.example.daniel.currencyconverter.Currency;
 
-import com.example.daniel.currencyconverter.XmlResponseModels.CurrencyCube;
 import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -12,5 +9,12 @@ import io.reactivex.Observable;
  */
 
 public interface CurrencyRepository {
-    Observable<Envelope> getResponse();
+    interface Network{
+        Observable<Envelope> getResponse();
+    }
+
+    interface File{
+        Envelope readFromFile();
+        Envelope saveToFile(Envelope envelope);
+    }
 }

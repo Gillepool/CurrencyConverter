@@ -17,7 +17,7 @@ public class CurrencyApplicationModule {
 
     private Application app;
 
-    public  CurrencyApplicationModule(Application app){
+    public CurrencyApplicationModule(Application app){
         this.app = app;
     }
 
