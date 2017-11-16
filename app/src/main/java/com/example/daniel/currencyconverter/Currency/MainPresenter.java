@@ -1,15 +1,15 @@
 package com.example.daniel.currencyconverter.Currency;
 
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.example.daniel.currencyconverter.Scheduler.Schedule;
 import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 public class MainPresenter implements MainContract.Presenter {
 
@@ -36,14 +36,29 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void onBaseSelected() {
         if(mView!=null){
-            Single<Envelope> currenciesObs = model.getCurrency();
-            Log.d("response", currenciesObs.toString());
+            Observable<Envelope> currenciesObs = model.getCurrency();
             currenciesObs
                     .subscribeOn(schedule.getScheduler())
                     .observeOn(schedule.getMainThread())
                     .subscribe(currencies -> mView.showRates(currencies),
                             error-> mView.showError());
         }
+    }
+
+    @Override
+    public void onValueChanged(double rateFrom, double rateTo, String value) {
+        try {
+            double result = Double.parseDouble(value)/rateFrom;
+            double convertResult = result * rateTo;
+            mView.showResult(String.format(Locale.getDefault(), "%.2f", convertResult));
+        } catch (NumberFormatException e) {
+            mView.showResult(null);
+        }
+    }
+
+    @Override
+    public void switchCurrencies(int from, int to) {
+
     }
 
 }

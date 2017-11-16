@@ -3,12 +3,14 @@ package com.example.daniel.currencyconverter.XmlResponseModels;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel on 2017-11-10.
  */
 
 @Root(name = "Cube/Cube")
-public class CurrencyCube {
+public class CurrencyCube implements Serializable {
 
 
     @Attribute(name="currency")

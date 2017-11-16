@@ -4,6 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Collection;
  */
 
 @Root(name = "Cube")
-public class TimeCube {
+public class TimeCube implements Serializable {
     @Attribute(name="time")
     private String time;
 

@@ -1,6 +1,7 @@
 package com.example.daniel.currencyconverter.File;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.daniel.currencyconverter.Currency.CurrencyRepository;
 import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
@@ -47,7 +48,7 @@ public class FileRepository implements CurrencyRepository.File {
     }
 
     @Override
-    public void saveToFile(Envelope envelope) {
+    public Envelope saveToFile(Envelope envelope) {
         envelope.setTimestamp(System.currentTimeMillis());
         try {
             FileOutputStream fileOutputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
@@ -58,6 +59,9 @@ public class FileRepository implements CurrencyRepository.File {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Log.d("file", "Saved to fiel!");
+        return envelope;
     }
 
 }

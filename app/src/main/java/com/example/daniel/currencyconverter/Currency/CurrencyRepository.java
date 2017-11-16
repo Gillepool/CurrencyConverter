@@ -2,7 +2,7 @@ package com.example.daniel.currencyconverter.Currency;
 
 import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 
 /**
  * Created by Daniel on 2017-11-11.
@@ -10,11 +10,11 @@ import io.reactivex.Single;
 
 public interface CurrencyRepository {
     interface Network{
-        Single<Envelope> getResponse();
+        Observable<Envelope> getResponse();
     }
 
     interface File{
         Envelope readFromFile();
-        void saveToFile(Envelope envelope);
+        Envelope saveToFile(Envelope envelope);
     }
 }

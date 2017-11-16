@@ -7,7 +7,6 @@ import com.example.daniel.currencyconverter.XmlResponseModels.Envelope;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 /**
  * Created by Daniel on 2017-11-11.
@@ -22,8 +21,8 @@ public class NetworkRepository implements CurrencyRepository.Network {
     }
 
     @Override
-    public Single<Envelope> getResponse() {
-        Single<Envelope> responseObservable = currencyApi.getData();
+    public Observable<Envelope> getResponse() {
+        Observable<Envelope> responseObservable = currencyApi.getData();
         return responseObservable;
     }
 }

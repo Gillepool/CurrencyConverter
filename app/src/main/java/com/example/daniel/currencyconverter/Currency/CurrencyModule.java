@@ -33,7 +33,6 @@ public class CurrencyModule {
                                                     FileRepository fileRepository,
                                                     NetworkUtil networkUtil){
         return new CurrencyModel(networkRepository, fileRepository, networkUtil);
-
     }
 
 
